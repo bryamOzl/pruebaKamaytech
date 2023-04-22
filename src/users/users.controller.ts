@@ -7,7 +7,7 @@ export class UsersController {
 
     constructor(private userService: UsersService) { }
 
-    @Post('/create')
+    @Post('/')
     async createUser(@Res() res, @Body() createUserDTO: CreateUserDTO) {
         const user = await this.userService.createUser(createUserDTO);
         return res.status(HttpStatus.OK).json({
@@ -17,7 +17,7 @@ export class UsersController {
         });
     }
 
-    @Get('/get')
+    @Get('/')
     async getUsers(@Res() res) {
         const users = await this.userService.getUsers();
         return res.status(HttpStatus.OK).json({
@@ -27,14 +27,14 @@ export class UsersController {
         });
     }
 
-    @Get('/get/:userID')
+    @Get('/:userID')
     async getUser(@Res() res, @Param('userID') userID) {
         const user = await this.userService.getUser(userID);
         if (!user) throw new NotFoundException('User Does not exists');
         return res.status(HttpStatus.OK).json(user);
     }
 
-    @Delete('/delete')
+    @Delete('/')
     async deleteUser(@Res() res, @Query('userID') userId) {
         const userDeleted = await this.userService.deleteUser(userId);
         if (!userDeleted) throw new NotFoundException('User Does not exists');
@@ -45,7 +45,7 @@ export class UsersController {
         });
     }
 
-    @Put('/update')
+    @Put('/')
     async updateUser(@Res() res, @Body() createUserDTO: CreateUserDTO, @Query('userID') userID) {
         const updadteUser = await this.userService.updateUser(userID, createUserDTO);
         if (!updadteUser) throw new NotFoundException('User Does not exists');
