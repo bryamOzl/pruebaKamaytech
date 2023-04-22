@@ -7,7 +7,7 @@ export class UsersController {
 
     constructor(private userService: UsersService) { }
 
-    @Post('/created')
+    @Post('/')
     async createUser(@Res() res, @Body() createUserDTO: CreateUserDTO) {
         const user = await this.userService.createUser(createUserDTO);
         return res.status(HttpStatus.OK).json({
