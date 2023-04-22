@@ -1,73 +1,78 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Prueba técnica para programador junior en Node.js📄
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Información sobre la API desplegado en Railway 
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Framework
+* NestJS
 
-## Description
+Base de datos
+* MongoDB
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Plataforma de despliegue
+* Railway
 
-## Installation
+URL de la API
+* https://pruebakamaytech-production.up.railway.app/
 
-```bash
-$ npm install
+## Pruebas realizadas en POSTMAN de las operaciones CRUD de la API.
+
+### 1. GET /users: Obtener todos los documentos de la colección.
+
+* URL: https://pruebakamaytech-production.up.railway.app/users
+
+RESULTADO
+![image](https://user-images.githubusercontent.com/34387442/233806166-032bde9f-dc77-4ed8-9ab4-00e45caa38bd.png)
+
+### 2. GET /users/🆔 Obtener un documento específico de la colección según su _id.
+Aquí se debe ingresar el id para obtener una colección especifica.
+
+* URL https://pruebakamaytech-production.up.railway.app/users/USERID
+
+RESULTADO
+![image](https://user-images.githubusercontent.com/34387442/233806359-5e8aef3c-0f44-42f8-be20-a166f5736f36.png)
+
+### 3. POST /users: Insertar un nuevo documento en la colección.
+Para poder insertar una nuevo documento necesitamos un body que en este caso es un JSON con la nueva información.
+
+```json
+{
+    "name": "Diego Hernan Uyaguari Guillen",
+    "email": "diego@gmail.com",
+    "age": "35"
+}
 ```
 
-## Running the app
+Una vez ingresa la información de forma correcta se creará el nuevo documento.
 
-```bash
-# development
-$ npm run start
+RESULTADO
 
-# watch mode
-$ npm run start:dev
+![image](https://user-images.githubusercontent.com/34387442/233806459-baed171a-aa42-4fdc-838d-418cd8e45bac.png)
 
-# production mode
-$ npm run start:prod
+### 4. PUT /users/🆔 Actualizar un documento específico de la colección según su _id.
+
+Para realizar la actualización se necesita de dos parámetros uno es el id especifico del documneto que se desea modificar y a su vez la información en formato JSON para modificar el documento seleccionada.
+
+* RUL https://pruebakamaytech-production.up.railway.app/users?userID=USER_ID
+
+```json
+{
+    "name": "Veronica Gabriela Redrovan Cedillo",
+    "email": "veronica@hotmail.com",
+    "age": "26"
+}
 ```
+RESULTADO
 
-## Test
+![image](https://user-images.githubusercontent.com/34387442/233806714-e9b86fa5-2c8d-4519-8f45-53db8d1b6ea8.png)
 
-```bash
-# unit tests
-$ npm run test
+Para verificar que el cambio se realizó correctamente podemos listar nuestros documentos o buscar por el id.
 
-# e2e tests
-$ npm run test:e2e
+### 5. DELETE /users/🆔 Eliminar un documento específico de la colección según su _id.
 
-# test coverage
-$ npm run test:cov
-```
+Parta finalizar tenemos el servicio para eliminar un documento mediante el id de usuario.
 
-## Support
+*URL https://pruebakamaytech-production.up.railway.app/users?userID=USRID
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+RESULTADO
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+![image](https://user-images.githubusercontent.com/34387442/233806775-23ecf6f7-7467-4b24-881b-5670f293ed3a.png)
